@@ -1,5 +1,6 @@
 import time
 
+
 def task_1():
     a = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
     return [el for el in a if el < 5]
@@ -41,32 +42,33 @@ def task_7(n):
     nextRow = []
     for i in range(n):
         nextRow.append(0)
-        for j in range(len(row)-1):
-            nextRow.append(row[j]+row[j+1])
+        for j in range(len(row) - 1):
+            nextRow.append(row[j] + row[j + 1])
         nextRow.append(0)
         row = nextRow
         nextRow = []
         print(row[1:-1])
 
+
 def task_8(str):
-    for i in range(round(len(str)/2)):
-        if str[i]!=str[-i-1]:
+    for i in range(round(len(str) / 2)):
+        if str[i] != str[-i - 1]:
             return False
     return True
 
 
 def task_9():
-    dels = [60*60*24, 60*60, 60]
+    dels = [60 * 60 * 24, 60 * 60, 60]
     timeList = []
     currT = round(time.time())
     for d in dels:
-        timeList.append(currT//d)
+        timeList.append(currT // d)
         currT = currT % d
     timeList.append(currT)
     st = ""
     for el in timeList:
-        st+=str(el)
-        st+=":"
+        st += str(el)
+        st += ":"
     return st[:-1]
 
 
@@ -74,9 +76,23 @@ def task_10():
     line = input()
     nums = [int(el) for el in line.split(',')]
     numsTup = tuple(nums)
-    return (nums,numsTup)
+    return (nums, numsTup)
 
 
 def task_11():
-    list = [1,2,3,4,5,6,7,8,9]
-    return (list[0],list[-1])
+    list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    return (list[0], list[-1])
+
+
+def task_12(string):
+    list = string.split(".")
+    if len(list) < 2 or list[-1] == '':
+        raise Exception("Cannot define extension")
+    return list[-1]
+
+
+def task_13(num):
+    razr = len(str(num))
+    return num + \
+           num * (10 ** razr) + num + \
+           num * (10 ** (razr * 2)) + num * (10 ** razr) + num  # n+nn+nnn
