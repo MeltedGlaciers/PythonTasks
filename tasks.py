@@ -1,3 +1,4 @@
+import os
 import time
 
 
@@ -96,3 +97,65 @@ def task_13(num):
     return num + \
            num * (10 ** razr) + num + \
            num * (10 ** (razr * 2)) + num * (10 ** razr) + num  # n+nn+nnn
+
+
+def task_14(list):
+    for el in list:
+        if el == 237:
+            break
+        if el % 2 == 0:
+            print(el)
+
+
+def task_15(list1, list2):
+    return list(set(list1) - set(list2))
+
+
+def task_16():
+    for file in os.listdir("./"):
+        print(file)
+
+
+def task_17(num):
+    str_num = str(num)
+    res = [int(ch) for ch in str_num]
+    return sum(res)
+
+
+def task_18(string, req_char):
+    count = 0
+    for ch in string:
+        if ch == req_char:
+            count += 1
+    return count
+
+
+def task_19(a, b):
+    a, b = b, a
+    return a, b
+
+
+def task_20(nums):
+    return list(filter(lambda el: el%15==0,nums))
+
+
+def task_21(nums):
+    return len(nums) == len(set(nums))
+
+
+def task_22(text):
+    text = text.replace('.',' ').replace(',',' ') # and other punctuation marks
+    word_dict = {}
+    longest = ''
+    for word in text.split():
+        if word=='':
+            continue
+        if word in word_dict:
+            word_dict[word]+=1
+        else:
+            word_dict[word]=1
+        if len(word)>len(longest):
+            longest=word
+    res = sorted(word_dict.items(), key=lambda my_dict: my_dict[1])[-1][0]
+    print(sorted(word_dict.items(), key=lambda my_dict: my_dict[1]))
+    return res, longest
